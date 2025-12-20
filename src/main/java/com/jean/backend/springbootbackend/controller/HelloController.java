@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
-    //instancia de la clase
     private final HelloService helloservice;
 
     public HelloController(HelloService helloservice){
