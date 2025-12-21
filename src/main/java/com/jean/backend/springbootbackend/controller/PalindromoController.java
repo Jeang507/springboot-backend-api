@@ -5,8 +5,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jean.backend.springbootbackend.service.PalindromoService;
 
+/**
+ * Controlador de si una frase es palíndromo o no.
+ */
 @RestController
-
 public class PalindromoController {
     
     private final PalindromoService palindromoService;
@@ -15,10 +17,15 @@ public class PalindromoController {
         this.palindromoService = palindromoService;
     }
 
-    @GetMapping("/respuesta/{frase}")
+    /**
+     * Endpoint para verificar si la frase es palíndromo o no
+     * @param frase es la frase a verificar
+     * @return un mensaje indicando si la frase es palíndromo o no
+     */
 
+    @GetMapping("/respuesta/{frase}")
     public String respuesta(@PathVariable String frase){
 
-        return ("La frase " + frase + ((palindromoService.esPalindromo(frase)) ? " Es palindromo" : " No es palindromo"));
+        return ("La frase " + frase + ((palindromoService.esPalindromo(frase)) ? " Es palíndromo" : " No es palíndromo"));
     }
 }
