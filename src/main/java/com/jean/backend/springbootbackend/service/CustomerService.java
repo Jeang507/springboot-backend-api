@@ -89,6 +89,34 @@ public class CustomerService {
         }
         return null;
     }
+
+    /**
+     * Actualizar un cliente en un campo en especifico
+     * @param customer cliente recibido desde el request
+     * @return cliente actualiza por campos
+     */
+    public Customer patchCliente(Customer customer){
+        for(Customer c : customers){
+            if(c.getId() == customer.getId()){
+
+                if (customer.getName() != null){
+                    c.setName(customer.getName());
+                }
+
+                if (customer.getUserName() != null){
+                    c.setUserName(customer.getUserName());
+                }
+
+                if(customer.getPassword() != null){
+                    c.setPassword(customer.getPassword());
+                }
+
+                return c;
+            }
+        }
+
+        return null;
+    }
 }
 
 
