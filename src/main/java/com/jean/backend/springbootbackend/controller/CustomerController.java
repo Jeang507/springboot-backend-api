@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.jean.backend.springbootbackend.service.CustomerService;
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
  * Controlador REST para manejar solicitudes de clientes.
  */
 @RestController
+//@RequestMapping("/customers") A nivel de clase
 public class CustomerController {
 
     private final CustomerService customersService;
@@ -29,6 +32,7 @@ public class CustomerController {
      * @return Lista de clientes
      */
     @GetMapping("/customers")
+    //@RequestMapping(method = RequestMethod.GET) a nivel de método
     public List<Customer> getCustomers()
     {
         return customersService.getCustomers();
@@ -40,6 +44,7 @@ public class CustomerController {
      * @return cliente encontrado o null si no existe el cliente
      */
     @GetMapping("/customers/username/{userName}")
+    //@RequestMapping(value = "/{userName}", method = RequestMethod.GET) a nivel de método con parámetro web
     public Customer getCliente(@PathVariable String userName)
     {
         return customersService.getCliente(userName);
@@ -51,6 +56,7 @@ public class CustomerController {
      * @return cliente registrado
      */
     @PostMapping("/customers")
+    //@RequestMapping(method = RequestMethod.POST) a nivel de método
     public Customer postCliente(@RequestBody Customer customer)
     {
         return customersService.postCliente(customer);
@@ -62,6 +68,7 @@ public class CustomerController {
      * @return cliente actualizado
      */
     @PutMapping("/customers")
+    //@RequestMapping(method = RequestMethod.PUT) a nivel de método
     public Customer putCliente(@RequestBody Customer customer)
     {
         return customersService.putCliente(customer);
@@ -73,6 +80,7 @@ public class CustomerController {
      * @return cliente eliminado
      */
     @DeleteMapping("/customers/{id}")
+    //@RequestMapping(method = RequestMethod.DELETE) a nivel de método
     public Customer deleteCliente(@PathVariable int id){
         return customersService.deleteCliente(id);
     }
@@ -83,6 +91,7 @@ public class CustomerController {
      * @return cliente actualizado parcialmente
      */
     @PatchMapping("/customers")
+    //@RequestMapping(method = RequestMethod.PATCH) a nivel de método
     public Customer patchCliente(@RequestBody Customer customer){
         return customersService.patchCliente(customer);
     }
