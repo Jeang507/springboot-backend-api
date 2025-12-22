@@ -72,5 +72,23 @@ public class CustomerService {
         }   
         return null;
     }
+
+    /**
+     * Eliminar un cliente en la lista
+     * @param id idenficador del usuario
+     * @return cliente eliminado
+     */
+    public Customer deleteCliente(int id){
+        for (int i = 0; i < customers.size(); i++){
+
+            if(customers.get(i).getId() == id){
+                Customer eliminado = customers.get(i);
+                customers.remove(i);
+                return eliminado;
+            }
+        }
+        return null;
+    }
 }
+
 

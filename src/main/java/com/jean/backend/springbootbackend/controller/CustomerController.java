@@ -1,5 +1,6 @@
 package com.jean.backend.springbootbackend.controller;
 import com.jean.backend.springbootbackend.model.Customer;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,7 +56,7 @@ public class CustomerController {
     }
 
     /**
-     * Endpoint para actualizar un cliente existente.y
+     * Endpoint para actualizar un cliente existente.
      * @param customer cliente recibido en el cuerpo de la petición
      * @return cliente actualizado
      */
@@ -63,5 +64,15 @@ public class CustomerController {
     public Customer putCliente(@RequestBody Customer customer)
     {
         return customersService.putCliente(customer);
+    }
+
+    /**
+     * Endpont para eliminar un cliente existente
+     * @param id idetificador del cliente 
+     * @return cliente eliminado
+     */
+    @DeleteMapping("/customers/{id}")
+    public Customer deleteCliente(@PathVariable int id){
+        return customersService.deleteCliente(id);
     }
 }
