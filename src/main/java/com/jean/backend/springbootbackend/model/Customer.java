@@ -6,7 +6,7 @@ package com.jean.backend.springbootbackend.model;
 public class Customer {
 
     //Atributos
-    private int ID;
+    private int id;
     private String name;
     private String userName;
     private String password;
@@ -15,8 +15,8 @@ public class Customer {
     public Customer(){}
 
     //Constructor con parámetros
-    public Customer(int ID, String name, String userName, String password){
-        this.ID = ID;
+    public Customer(int id, String name, String userName, String password){
+        this.id = id;
         this.name = name;
         this.userName = userName;
         this.password = password;
@@ -24,11 +24,11 @@ public class Customer {
 
     //Getter y Setters
     public int getId(){
-        return ID;
+        return id;
     }
 
-    public void setId(int ID){
-        this.ID = ID;
+    public void setId(int id){
+        this.id = id;
     }
 
     public String getName(){

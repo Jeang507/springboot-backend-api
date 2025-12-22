@@ -3,6 +3,7 @@ import com.jean.backend.springbootbackend.model.Customer;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.jean.backend.springbootbackend.service.CustomerService;
@@ -36,7 +37,7 @@ public class CustomerController {
      * @param userName nombre de usuario del cliente
      * @return cliente encontrado o null si no existe el cliente
      */
-    @GetMapping("/customers/{userName}")
+    @GetMapping("/customers/username/{userName}")
     public Customer getCliente(@PathVariable String userName)
     {
         return customersService.getCliente(userName);
@@ -51,5 +52,16 @@ public class CustomerController {
     public Customer postCliente(@RequestBody Customer customer)
     {
         return customersService.postCliente(customer);
+    }
+
+    /**
+     * Endpoint para actualizar un cliente existente.y
+     * @param customer cliente recibido en el cuerpo de la petición
+     * @return cliente actualizado
+     */
+    @PutMapping("/customers")
+    public Customer putCliente(@RequestBody Customer customer)
+    {
+        return customersService.putCliente(customer);
     }
 }

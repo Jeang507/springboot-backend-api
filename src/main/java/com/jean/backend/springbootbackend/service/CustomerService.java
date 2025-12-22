@@ -55,5 +55,22 @@ public class CustomerService {
         customers.add(customer);
         return customer;
     }
+
+    /**
+     * Actualizar un cliente en la lista.
+     * @param customer cliente recibido desde el request
+     * @return cliente actualizado
+     */
+    public Customer putCliente(Customer customer){
+        for (Customer c : customers){
+            if (c.getId() == customer.getId()){
+                c.setName(customer.getName());
+                c.setUserName(customer.getUserName());
+                c.setPassword(customer.getPassword());
+                return c;
+            }
+        }   
+        return null;
+    }
 }
 
