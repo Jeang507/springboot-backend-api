@@ -1,5 +1,8 @@
 package com.jean.backend.springbootbackend.model;
 
+/**
+ * Modelo: Clase que inicializa los atributos, getters y setters
+ */
 public class Customer {
 
     //Atributos
@@ -8,7 +11,10 @@ public class Customer {
     private String userName;
     private String password;
 
-    //Constructor
+    //Constructor vacío
+    public Customer(){}
+
+    //Constructor con parámetros
     public Customer(int ID, String name, String userName, String password){
         this.ID = ID;
         this.name = name;
