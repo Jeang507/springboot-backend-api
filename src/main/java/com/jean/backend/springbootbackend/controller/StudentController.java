@@ -1,12 +1,14 @@
 package com.jean.backend.springbootbackend.controller;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.jean.backend.springbootbackend.service.StudentService;
+
 import com.jean.backend.springbootbackend.model.Student;
 
+import java.net.URI;
 import java.util.List;
 
 /**
@@ -54,10 +56,15 @@ public class StudentController {
      */
     @PostMapping
     public ResponseEntity<Student> postStudents(@RequestBody Student student){
-        
+
         Student created = studentService.postStudents(student);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(created);
+        URI location = ServletUriComponentsBuilder
+        .fromCurrentRequest()
+        .path("/{id}").buildAndExpand(created.getId())
+        .toUri();
+        
+        return ResponseEntity.created(location).body(created);
     }
 
     /**
@@ -65,9 +72,13 @@ public class StudentController {
      * @param student estudiante con los datos nuevos
      * @return estudiante actualizado o null si no existe
      */
-    @PutMapping
-    public ResponseEntity<Student> putStudents(@RequestBody Student student){
+    @PutMapping("/{id}")
+    public ResponseEntity<Student> putStudents(@RequestBody Student student, @PathVariable int id){
+
+        student.setId(id);
+
         Student fullUpdate = studentService.putStudents(student);
+
         if (fullUpdate == null){
             return ResponseEntity.notFound().build();
         }
@@ -79,8 +90,11 @@ public class StudentController {
      * @param student estudiante con los datos a modificar
      * @return estudiante actualizado o null si no existe
      */
-    @PatchMapping
-    public ResponseEntity<Student> patchStudents(@RequestBody Student student){
+    @PatchMapping("/{id}")
+    public ResponseEntity<Student> patchStudents(@RequestBody Student student, @PathVariable int id){
+
+        student.setId(id);
+
         Student partialUpdate = studentService.patchStudents(student);
 
         if (partialUpdate == null){
