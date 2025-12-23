@@ -63,7 +63,6 @@ public class StudentController {
         .fromCurrentRequest()
         .path("/{id}").buildAndExpand(created.getId())
         .toUri();
-        
         return ResponseEntity.created(location).body(created);
     }
 
@@ -72,10 +71,8 @@ public class StudentController {
      * @param student estudiante con los datos nuevos
      * @return estudiante actualizado o null si no existe
      */
-    @PutMapping("/{id}")
-    public ResponseEntity<Student> putStudents(@RequestBody Student student, @PathVariable int id){
-
-        student.setId(id);
+    @PutMapping
+    public ResponseEntity<Student> putStudents(@RequestBody Student student){
 
         Student fullUpdate = studentService.putStudents(student);
 
@@ -90,10 +87,8 @@ public class StudentController {
      * @param student estudiante con los datos a modificar
      * @return estudiante actualizado o null si no existe
      */
-    @PatchMapping("/{id}")
-    public ResponseEntity<Student> patchStudents(@RequestBody Student student, @PathVariable int id){
-
-        student.setId(id);
+    @PatchMapping
+    public ResponseEntity<Student> patchStudents(@RequestBody Student student){
 
         Student partialUpdate = studentService.patchStudents(student);
 
