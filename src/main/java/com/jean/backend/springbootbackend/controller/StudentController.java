@@ -4,7 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.jean.backend.springbootbackend.service.StudentService;
+import com.jean.backend.springbootbackend.service.StudentServiceImpl;
 
 import com.jean.backend.springbootbackend.model.Student;
 
@@ -18,9 +18,9 @@ import java.util.List;
 @RequestMapping("/students")
 public class StudentController {
 
-    private final StudentService studentService;
+    private final StudentServiceImpl studentService;
 
-    public StudentController(StudentService studentService){
+    public StudentController(StudentServiceImpl studentService){
         this.studentService = studentService;
     }
 
