@@ -1,0 +1,30 @@
+[
+    {
+        "id": 123,
+        "name": "Angel Danien",
+        "email": "123@gmail.com",
+        "age": 15,
+        "course": "Matemática"
+    },
+    {
+        "id": 456,
+        "name": "José Angel",
+        "email": "456@gmail.com",
+        "age": 10,
+        "course": "Ciencias sociales"
+    },
+    {
+        "id": 789,
+        "name": "Salazar Danien",
+        "email": "789@gmail.com",
+        "age": 12,
+        "course": "Física"
+    },
+    {
+        "id": 234,
+        "name": "Danien Angel",
+        "email": "234@gmail.com",
+        "age": 14,
+        "course": "Ciencias Naturales"
+    }
+]

@@ -4,8 +4,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.jean.backend.springbootbackend.service.StudentServiceImpl;
-
+import com.jean.backend.springbootbackend.service.StudentService;
+import com.jean.backend.springbootbackend.service.StudentServiceJSON;
 import com.jean.backend.springbootbackend.model.Student;
 
 import java.net.URI;
@@ -18,10 +18,17 @@ import java.util.List;
 @RequestMapping("/students")
 public class StudentController {
 
-    private final StudentServiceImpl studentService;
+    private final StudentService studentService;
+    private final StudentServiceJSON studentServiceJSON;
 
-    public StudentController(StudentServiceImpl studentService){
+    public StudentController(StudentService studentService, StudentServiceJSON studentServiceJSON){
         this.studentService = studentService;
+        this.studentServiceJSON = studentServiceJSON;
+    }
+
+    @GetMapping("/json")
+    public ResponseEntity<List<Student>> getStudentsFromJson(){
+        return ResponseEntity.ok(studentServiceJSON.getStudentsFromJson());
     }
 
     /**

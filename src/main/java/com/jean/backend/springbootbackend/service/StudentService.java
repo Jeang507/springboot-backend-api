@@ -4,15 +4,15 @@ import java.util.List;
 
 public interface StudentService {
     
-    List<Student> getStudents();
+    public List<Student> getStudents();
 
-    Student getEmail(String email);
+    public Student getEmail(String email);
 
-    Student postStudents(Student student);
+    public Student postStudents(Student student);
 
-    Student putStudents(Student student);
+    public Student putStudents(Student student);
 
-    Student patchStudents(Student student);
+    public Student patchStudents(Student student);
 
-    Student deleteStudents(int id);
+    public Student deleteStudents(int id);
 }
