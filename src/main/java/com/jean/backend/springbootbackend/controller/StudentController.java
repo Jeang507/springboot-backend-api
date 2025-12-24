@@ -25,7 +25,10 @@ public class StudentController {
         this.studentService = studentService;
         this.studentServiceJSON = studentServiceJSON;
     }
-
+    /**
+     * Devuelve la lista de estudiantes de un archivo JSON
+     * @return lista de estudaintes de un archivo JSON
+     */
     @GetMapping("/json")
     public ResponseEntity<List<Student>> getStudentsFromJson(){
         return ResponseEntity.ok(studentServiceJSON.getStudentsFromJson());
@@ -35,6 +38,7 @@ public class StudentController {
      * Devuelve la lista de todos los estudiantes.
      * @return lista de estudiantes
      */
+    
     @GetMapping
     public ResponseEntity<List<Student>> getStudents(){
         return ResponseEntity.ok(studentService.getStudents());
@@ -43,7 +47,7 @@ public class StudentController {
     /**
      * Busca un estudiante por su correo electrónico.
      * @param email correo del estudiante
-     * @return estudiante encontrado o null si no existe
+     * @return respuesta HTTP con el estudiante encontrado o estado 404 (Not Found) si no existe
      */
     @GetMapping("/email")
     public ResponseEntity<Student> getEmail(@RequestParam String email){
@@ -59,7 +63,7 @@ public class StudentController {
     /**
      * Agrega un nuevo estudiante.
      * @param student estudiante a registrar
-     * @return estudiante agregado
+     * @return respuesta HTTP 201 (CREATED) y la URI del recurso creado
      */
     @PostMapping
     public ResponseEntity<Student> postStudents(@RequestBody Student student){
@@ -76,7 +80,7 @@ public class StudentController {
     /**
      * Actualiza completamente un estudiante existente.
      * @param student estudiante con los datos nuevos
-     * @return estudiante actualizado o null si no existe
+     * @return respuesta HTTP con el estudiante actualizado o estado 404 (Not Found) si no existe
      */
     @PutMapping
     public ResponseEntity<Student> putStudents(@RequestBody Student student){
@@ -92,7 +96,7 @@ public class StudentController {
     /**
      * Actualiza solo los campos enviados de un estudiante.
      * @param student estudiante con los datos a modificar
-     * @return estudiante actualizado o null si no existe
+     * @return respuesta HTTP con el estudiante actualizado parcialmente o estado 404 (Not Found) si no existe
      */
     @PatchMapping
     public ResponseEntity<Student> patchStudents(@RequestBody Student student){
@@ -108,7 +112,7 @@ public class StudentController {
     /**
      * Elimina un estudiante según su id.
      * @param id id del estudiante
-     * @return estudiante eliminado o null si no existe
+     * @return respuesta HTTP con el estudiante eliminado o estado 404 (Not Found) si no existe
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Student> deleteStudents(@PathVariable int id){
